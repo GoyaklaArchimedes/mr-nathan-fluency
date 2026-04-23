@@ -10,10 +10,8 @@
 :root{
   --cream:#fdf8e1;--cream-dark:#f5efcc;
   --blue:#1a4b8c;--blue-mid:#2a6dd9;--blue-light:#d6e8ff;
-  --white:#ffffff;--text:#1a1a2e;
-  --green:#1e8a4a;--green-light:#d4f5e2;
+  --white:#ffffff;
   --gold:#c8960c;--gold-light:#fff3cc;
-  --purple:#6b21a8;
   --shadow-sm:0 2px 8px rgba(26,75,140,0.12);
   --shadow-md:0 4px 20px rgba(26,75,140,0.18);
   --shadow-lg:0 8px 40px rgba(26,75,140,0.22);
@@ -116,13 +114,13 @@ body{
   margin-bottom:clamp(16px,3vw,28px);
 }
 
-/* CARDS */
+/* CARD */
 .card{
   background:var(--white);border-radius:var(--radius-lg);
   box-shadow:var(--shadow-md);overflow:hidden;
   display:flex;flex-direction:column;
   transition:transform 0.18s,box-shadow 0.18s;
-  text-decoration:none;border:2px solid transparent;
+  text-decoration:none;border:2px solid #2a6dd9;
 }
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .card-top{
@@ -132,42 +130,26 @@ body{
 .card-icon{
   width:clamp(60px,10vw,80px);height:clamp(60px,10vw,80px);
   border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:clamp(28px,5vw,38px);margin-bottom:12px;box-shadow:var(--shadow-sm);
+  font-size:clamp(28px,5vw,38px);margin-bottom:12px;
+  background:var(--blue-light);
+  box-shadow:var(--shadow-sm);
 }
-.card-title{font-family:'Fredoka One',cursive;font-size:clamp(16px,2.5vw,22px);margin-bottom:6px;}
+.card-title{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(16px,2.5vw,22px);
+  margin-bottom:6px;color:var(--blue);
+}
 .card-desc{font-size:clamp(11px,1.5vw,13px);color:#666;font-weight:600;line-height:1.4;}
 .card-btn{
   display:block;text-align:center;
   padding:clamp(10px,1.5vw,14px);
   font-family:'Fredoka One',cursive;
   font-size:clamp(13px,1.8vw,16px);
+  background:var(--blue);color:white;
   border-top:2px solid rgba(0,0,0,0.06);
   transition:background 0.15s;
 }
-.badge-soon{
-  display:inline-block;background:var(--cream-dark);color:#999;
-  border-radius:20px;padding:2px 10px;
-  font-size:11px;font-weight:800;margin-top:6px;
-}
-
-/* Card colour themes */
-.card.tables{border-color:#2a6dd9;}
-.card.tables .card-icon{background:var(--blue-light);color:var(--blue);}
-.card.tables .card-title{color:var(--blue);}
-.card.tables .card-btn{background:var(--blue);color:white;}
-.card.tables:hover .card-btn{background:var(--blue-mid);}
-
-.card.coming{border-color:#ddd;opacity:0.72;pointer-events:none;}
-.card.coming .card-icon{background:#f0f0f0;color:#aaa;}
-.card.coming .card-title{color:#aaa;}
-.card.coming .card-btn{background:#eee;color:#aaa;}
-
-.card.addition .card-icon{background:var(--green-light);color:var(--green);}
-.card.addition .card-title{color:var(--green);}
-.card.subtraction .card-icon{background:#fde8e6;color:#c0392b;}
-.card.subtraction .card-title{color:#c0392b;}
-.card.division .card-icon{background:#f3e8ff;color:var(--purple);}
-.card.division .card-title{color:var(--purple);}
+.card:hover .card-btn{background:var(--blue-mid);}
 
 /* FOOTER */
 .footer{
@@ -205,10 +187,10 @@ body{
     <p>Choose a product below to start practising. More products coming soon!</p>
   </div>
 
-  <!-- LIVE -->
+  <!-- PRODUCTS -->
   <div class="section-label">Available Now <span>LIVE</span></div>
   <div class="grid">
-    <a class="card tables" href="tables.html">
+    <a class="card" href="tables.html">
       <div class="card-top">
         <div class="card-icon">✖️</div>
         <div class="card-title">Tables Mastery</div>
@@ -216,38 +198,6 @@ body{
       </div>
       <div class="card-btn">▶ Start Now</div>
     </a>
-  </div>
-
-  <!-- COMING SOON -->
-  <div class="section-label">Coming Soon <span style="background:var(--gold);color:#333;">SOON</span></div>
-  <div class="grid">
-    <div class="card addition coming">
-      <div class="card-top">
-        <div class="card-icon">➕</div>
-        <div class="card-title">Addition Fluency</div>
-        <div class="card-desc">Fast addition practice across all year levels.</div>
-        <div class="badge-soon">COMING SOON</div>
-      </div>
-      <div class="card-btn">Coming Soon</div>
-    </div>
-    <div class="card subtraction coming">
-      <div class="card-top">
-        <div class="card-icon">➖</div>
-        <div class="card-title">Subtraction Fluency</div>
-        <div class="card-desc">Build confidence and speed with subtraction.</div>
-        <div class="badge-soon">COMING SOON</div>
-      </div>
-      <div class="card-btn">Coming Soon</div>
-    </div>
-    <div class="card division coming">
-      <div class="card-top">
-        <div class="card-icon">➗</div>
-        <div class="card-title">Division Fluency</div>
-        <div class="card-desc">Division facts and strategies made fun.</div>
-        <div class="badge-soon">COMING SOON</div>
-      </div>
-      <div class="card-btn">Coming Soon</div>
-    </div>
   </div>
 
   <!-- FOOTER -->
