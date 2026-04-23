@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mr Nathan's Maths Fluency — Tables Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#fdf8e1;--cream-dark:#f5efcc;
+  --pink:#f2a7c3;--pink-light:#fce4ef;--pink-mid:#e8799f;
+  --blue:#1a4b8c;--blue-mid:#2a6dd9;--blue-light:#d6e8ff;
+  --white:#ffffff;--text:#1a1a2e;
+  --green:#1e8a4a;--green-light:#d4f5e2;
+  --red:#c0392b;--red-light:#fde8e6;
+  --gold:#c8960c;--gold-light:#fff3cc;
+  --purple:#6b21a8;--orange:#e67e22;
+  --gray-num:#9ca3af;--gray-bg:#8b9ab0;--gray-fact:#c9d4e0;
+  --shadow-sm:0 2px 8px rgba(26,75,140,0.12);
+  --shadow-md:0 4px 20px rgba(26,75,140,0.18);
+  --shadow-lg:0 8px 40px rgba(26,75,140,0.22);
+  --radius-sm:10px;--radius-md:16px;--radius-lg:22px;--radius-xl:32px;
+}
+html{height:100%}
+body{
+  font-family:'Nunito',sans-serif;
+  background:linear-gradient(135deg,#1a4b8c 0%,#2a6dd9 40%,#3b82f6 100%);
+  min-height:100vh;
+  display:flex;align-items:flex-start;justify-content:center;
+}
+#app{
+  background:var(--cream);
+  min-height:100vh;
+  width:100%;
+  max-width:100%;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════════════════ */
+.page{display:none;flex-direction:column;min-height:100vh;background:var(--cream);padding:clamp(10px,2vw,20px)}
+.page.active{display:flex}
+
+/* ═══════════════════════════════════════════════════════
+   HEADER — BRANDED MASTHEAD
+═══════════════════════════════════════════════════════ */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:clamp(8px,1.5vw,14px) clamp(10px,2vw,20px);
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);
+  border-radius:var(--radius-lg);
+  margin-bottom:clamp(10px,2vw,18px);
+  box-shadow:var(--shadow-md);
+  position:relative;
+  overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;
+  background:rgba(255,255,255,0.06);
+  border-radius:50%;
+}
+.header::after{
+  content:'';position:absolute;bottom:-20px;right:60px;
+  width:80px;height:80px;
+  background:rgba(255,255,255,0.04);
+  border-radius:50%;
+}
+.logo-wrap{display:flex;align-items:center;gap:clamp(10px,2vw,16px);position:relative;z-index:1}
+.logo-circle{
+  width:clamp(70px,10vw,96px);
+  height:clamp(70px,10vw,96px);
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,0.4);
+  overflow:hidden;flex-shrink:0;
+  background:var(--white);
+  box-shadow:0 3px 16px rgba(0,0,0,0.25);
+}
+.logo-circle img{width:100%;height:100%;object-fit:contain}
+.brand-block{display:flex;flex-direction:column}
+.brand-name{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(16px,2.8vw,26px);
+  color:#ffffff;
+  line-height:1.1;
+  letter-spacing:0.3px;
+}
+.brand-sub{
+  font-size:clamp(10px,1.6vw,14px);
+  color:rgba(255,255,255,0.75);
+  font-weight:700;
+  letter-spacing:0.5px;
+  margin-top:2px;
+}
+.brand-series{
+  font-size:clamp(9px,1.3vw,12px);
+  color:rgba(255,255,255,0.55);
+  font-weight:600;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-top:1px;
+}
+.nav-btns{display:flex;gap:6px;flex-shrink:0;position:relative;z-index:1}
+.nav-btn{
+  background:rgba(255,255,255,0.15);
+  color:#fff;
+  border:1.5px solid rgba(255,255,255,0.3);
+  border-radius:var(--radius-sm);
+  padding:clamp(6px,1vw,10px) clamp(10px,1.5vw,16px);
+  font-size:clamp(11px,1.5vw,14px);
+  cursor:pointer;font-weight:800;
+  transition:all 0.2s;
+  min-height:40px;
+  backdrop-filter:blur(4px);
+}
+.nav-btn:hover{background:rgba(255,255,255,0.28);transform:translateY(-1px)}
+.nav-btn.home-btn{background:var(--pink);color:var(--blue);border-color:var(--pink)}
+.nav-btn.home-btn:hover{background:var(--pink-mid);color:#fff}
+
+/* ═══════════════════════════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════════════════════════ */
+.home-hero{
+  text-align:center;
+  margin-bottom:clamp(12px,2vw,20px);
+  padding:clamp(10px,2vw,18px);
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);
+  border-radius:var(--radius-xl);
+  color:white;
+  box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+}
+.home-hero::before{
+  content:'×÷';font-size:80px;opacity:0.06;
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-family:'Fredoka One';letter-spacing:-10px;
+}
+.home-title{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(22px,4vw,38px);
+  color:#ffffff;
+  line-height:1.15;
+  margin-bottom:6px;
+}
+.home-sub{font-size:clamp(13px,1.8vw,17px);color:rgba(255,255,255,0.8);font-weight:700}
+.series-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:20px;
+  padding:4px 14px;
+  font-size:clamp(10px,1.4vw,13px);
+  color:rgba(255,255,255,0.85);
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.table-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.5vw,14px);margin-bottom:clamp(10px,2vw,16px)}
+@media(min-width:700px){.table-grid{grid-template-columns:repeat(4,1fr)}}
+.table-card{
+  background:var(--white);
+  border:2.5px solid var(--blue-light);
+  border-radius:var(--radius-lg);
+  padding:clamp(14px,2.5vw,24px) clamp(10px,2vw,18px);
+  text-align:center;cursor:pointer;
+  transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative;
+  box-shadow:var(--shadow-sm);
+}
+.table-card:hover{
+  transform:translateY(-4px) scale(1.03);
+  border-color:var(--blue);
+  box-shadow:var(--shadow-md);
+  background:var(--pink-light);
+}
+.table-card.starred{border-color:var(--gold);background:var(--gold-light)}
+.tc-num{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(36px,6vw,54px);
+  color:var(--blue);
+  line-height:1;
+}
+.tc-label{font-size:clamp(11px,1.5vw,14px);color:#6b7280;font-weight:700;margin-top:3px}
+.tc-badge{
+  position:absolute;top:8px;right:10px;
+  font-size:clamp(16px,2.5vw,22px);
+}
+.tc-progress{
+  height:4px;background:#e5e7eb;border-radius:4px;
+  margin-top:8px;overflow:hidden;
+}
+.tc-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-mid));border-radius:4px;transition:width 0.5s}
+
+.combined-btn{
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:#fff;border:none;border-radius:var(--radius-md);
+  padding:clamp(12px,2vw,16px);
+  font-size:clamp(14px,2vw,17px);font-weight:800;
+  cursor:pointer;width:100%;margin-bottom:clamp(10px,2vw,14px);
+  box-shadow:var(--shadow-sm);
+  transition:all 0.2s;
+  min-height:52px;
+}
+.combined-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+.print-section{
+  background:var(--white);
+  border-radius:var(--radius-md);
+  border:2px solid var(--blue-light);
+  padding:clamp(12px,2vw,18px);
+  box-shadow:var(--shadow-sm);
+}
+.print-title{
+  font-size:clamp(12px,1.6vw,15px);font-weight:800;
+  color:var(--blue);margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.print-btns{display:flex;gap:8px}
+.print-btn{
+  flex:1;background:linear-gradient(135deg,var(--pink-light),#ffd6e7);
+  color:var(--blue);border:1.5px solid var(--pink);
+  border-radius:var(--radius-sm);
+  padding:clamp(8px,1.5vw,12px) 6px;
+  font-size:clamp(11px,1.5vw,14px);font-weight:800;
+  cursor:pointer;transition:all 0.2s;min-height:48px;
+}
+.print-btn:hover{background:var(--pink);color:var(--white);transform:translateY(-1px)}
+
+/* ═══════════════════════════════════════════════════════
+   REVIEW PANEL (home page)
+═══════════════════════════════════════════════════════ */
+.review-panel{
+  background:linear-gradient(135deg,#fff7e6,#fffbf0);
+  border-radius:var(--radius-md);
+  border:2px solid var(--gold);
+  padding:clamp(10px,2vw,16px);
+  margin-bottom:clamp(10px,2vw,14px);
+  box-shadow:var(--shadow-sm);
+  display:none;
+}
+.review-panel h3{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(14px,2vw,18px);color:var(--gold);
+  margin-bottom:8px;display:flex;align-items:center;gap:6px;
+}
+.review-items{display:flex;gap:6px;flex-wrap:wrap}
+.review-chip{
+  background:var(--white);border:1.5px solid var(--gold);
+  border-radius:20px;padding:5px 12px;
+  font-size:clamp(12px,1.5vw,14px);font-weight:800;color:var(--blue);
+  cursor:pointer;transition:all 0.2s;
+}
+.review-chip:hover{background:var(--gold);color:var(--white)}
+.review-chip .due-label{font-size:10px;color:#92400e;display:block;font-weight:600}
+
+/* ═══════════════════════════════════════════════════════
+   TABLE HOME
+═══════════════════════════════════════════════════════ */
+.page-title{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(18px,3vw,28px);
+  color:var(--blue);margin:4px 0 10px;text-align:center;
+}
+.section-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.snav-btn{
+  flex:1;min-width:70px;
+  background:var(--white);border:2px solid var(--blue-light);
+  color:var(--blue);border-radius:var(--radius-sm);
+  padding:clamp(7px,1.2vw,11px) 5px;
+  font-size:clamp(11px,1.5vw,14px);font-weight:800;
+  cursor:pointer;text-align:center;transition:all 0.2s;min-height:44px;
+}
+.snav-btn:hover{background:var(--pink-light);border-color:var(--pink)}
+.snav-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.snav-btn.done{border-color:var(--green);color:var(--green)}
+.snav-btn.done.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ═══════════════════════════════════════════════════════
+   STAIRCASE TABLE
+═══════════════════════════════════════════════════════ */
+.staircase{display:flex;flex-direction:column;gap:clamp(6px,1vw,10px);margin-bottom:12px}
+.stair-row{display:flex;justify-content:flex-start}
+.stair-row:nth-child(1){margin-left:0}
+.stair-row:nth-child(2){margin-left:clamp(20px,4vw,40px)}
+.stair-row:nth-child(3){margin-left:clamp(40px,8vw,80px)}
+.stair-row:nth-child(4){margin-left:clamp(60px,12vw,120px)}
+.fact-box{
+  background:linear-gradient(135deg,var(--pink-light),#fce8f0);
+  border-radius:var(--radius-md);
+  padding:clamp(8px,1.5vw,14px) clamp(10px,2vw,16px);
+  min-width:clamp(130px,22vw,200px);
+  box-shadow:var(--shadow-sm);
+  border:1.5px solid rgba(242,167,195,0.4);
+  transition:box-shadow 0.2s;
+}
+.fact-box:hover{box-shadow:var(--shadow-md)}
+.fact-row{display:flex;align-items:center;gap:clamp(6px,1.2vw,10px);margin-bottom:clamp(5px,0.8vw,8px)}
+.fact-row:last-child{margin-bottom:0}
+.fact-n{
+  background:var(--blue);color:#fff;
+  font-size:clamp(11px,1.5vw,14px);font-weight:800;
+  width:clamp(22px,3vw,30px);height:clamp(22px,3vw,30px);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.fact-val{font-size:clamp(17px,2.5vw,22px);font-weight:800;color:var(--text)}
+.fact-val.greyed{color:var(--gray-fact)}
+.fact-input{
+  width:clamp(60px,10vw,80px);height:clamp(36px,5vw,44px);
+  border:2.5px solid var(--blue-light);border-radius:var(--radius-sm);
+  font-size:clamp(18px,2.5vw,22px);font-weight:800;
+  text-align:center;background:var(--white);color:var(--text);
+  font-family:'Nunito',sans-serif;
+  transition:all 0.2s;
+}
+.fact-input.highlighted{
+  border-color:var(--gold);background:var(--gold-light);
+  box-shadow:0 0 0 4px rgba(200,150,12,0.2);
+  transform:scale(1.05);
+}
+.fact-input.correct-fill{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.fact-input.wrong-fill{background:var(--red-light);border-color:var(--red)}
+
+/* ═══════════════════════════════════════════════════════
+   LEARN LAYOUT — SIDE BY SIDE ON WIDE
+═══════════════════════════════════════════════════════ */
+.learn-layout{
+  display:flex;flex-direction:column;gap:12px;flex:1;
+}
+@media(min-width:680px){
+  .learn-layout{flex-direction:row;align-items:flex-start}
+  .staircase-col{flex:1.4}
+  .question-col{flex:1;display:flex;flex-direction:column;align-items:center;padding-top:6px;min-width:200px}
+}
+.staircase-col{flex:1}
+.question-col{display:flex;flex-direction:column;align-items:center;padding-top:4px}
+
+/* ═══════════════════════════════════════════════════════
+   CIRCLE QUESTION
+═══════════════════════════════════════════════════════ */
+.q-circle{
+  width:clamp(110px,18vw,160px);
+  height:clamp(110px,18vw,160px);
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin-bottom:10px;
+  box-shadow:var(--shadow-md);
+  position:relative;
+}
+.q-circle::before{
+  content:'';
+  position:absolute;inset:5px;border-radius:50%;
+  border:2px dashed rgba(255,255,255,0.3);
+}
+.q-circle-text{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(20px,3.5vw,30px);
+  color:#ffffff;
+  line-height:1.2;text-align:center;
+  position:relative;z-index:1;
+}
+.cycle-indicator{
+  font-size:clamp(12px,1.6vw,15px);color:#6b7280;font-weight:700;
+  margin-bottom:4px;background:var(--white);
+  padding:4px 12px;border-radius:20px;
+  border:1.5px solid var(--blue-light);
+}
+.phase-label{
+  font-size:clamp(13px,1.8vw,16px);font-weight:800;
+  color:var(--blue);margin-bottom:8px;text-align:center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FEEDBACK
+═══════════════════════════════════════════════════════ */
+.feedback-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;min-height:32px;margin-bottom:8px;
+}
+.tick-icon{
+  font-size:clamp(22px,3.5vw,30px);color:var(--green);
+  display:none;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cross-icon{
+  font-size:clamp(20px,3vw,26px);color:var(--red);
+  display:none;animation:shake 0.4s;
+}
+.fb-text{font-size:clamp(14px,2vw,17px);font-weight:800}
+.fb-text.correct{color:var(--green)}
+.fb-text.wrong{color:var(--red)}
+.fb-text.info{color:var(--blue)}
+
+@keyframes popIn{0%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(26,75,140,0.4)}50%{box-shadow:0 0 0 10px rgba(26,75,140,0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes starSpin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.3)}100%{transform:rotate(360deg) scale(1)}}
+@keyframes shine{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes flashCorrect{0%,100%{background:linear-gradient(135deg,var(--blue),var(--blue-mid))}50%{background:linear-gradient(135deg,var(--green),#27ae60)}}
+
+/* ═══════════════════════════════════════════════════════
+   ADVANCE BUTTON
+═══════════════════════════════════════════════════════ */
+.advance-btn{
+  background:linear-gradient(135deg,var(--green),#27ae60);
+  color:#fff;border:none;border-radius:var(--radius-md);
+  padding:clamp(10px,1.8vw,14px) clamp(20px,3vw,30px);
+  font-size:clamp(14px,2vw,17px);font-weight:800;
+  cursor:pointer;display:none;margin:8px auto;
+  box-shadow:var(--shadow-sm);transition:all 0.2s;
+  min-height:48px;
+}
+.advance-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+/* ═══════════════════════════════════════════════════════
+   INTERMEDIATE TEST (no table, no timer)
+═══════════════════════════════════════════════════════ */
+.inter-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(10px,2vw,20px) 0;
+  animation:fadeInUp 0.4s ease;
+}
+.inter-card{
+  background:var(--white);
+  border-radius:var(--radius-xl);
+  padding:clamp(20px,3vw,36px);
+  text-align:center;
+  box-shadow:var(--shadow-lg);
+  border:2px solid var(--blue-light);
+  width:100%;max-width:480px;
+  margin-bottom:12px;
+}
+.inter-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:white;border-radius:20px;padding:5px 16px;
+  font-size:clamp(11px,1.6vw,14px);font-weight:800;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;
+}
+.inter-q{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(36px,7vw,62px);
+  color:var(--blue);margin-bottom:16px;line-height:1.1;
+}
+.inter-input{
+  width:clamp(80px,15vw,110px);height:clamp(54px,8vw,68px);
+  border:3px solid var(--blue-light);border-radius:var(--radius-md);
+  font-size:clamp(26px,4vw,36px);font-weight:800;
+  text-align:center;background:var(--white);color:var(--text);
+  font-family:'Nunito',sans-serif;margin-bottom:14px;
+  transition:all 0.2s;
+}
+.inter-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-light);outline:none}
+.inter-input.correct{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.inter-input.wrong{border-color:var(--red);background:var(--red-light)}
+.inter-submit{
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:#fff;border:none;border-radius:var(--radius-md);
+  padding:clamp(12px,2vw,16px) clamp(24px,4vw,36px);
+  font-size:clamp(15px,2vw,18px);font-weight:800;
+  cursor:pointer;min-height:50px;box-shadow:var(--shadow-sm);
+  transition:all 0.2s;width:100%;max-width:200px;
+}
+.inter-submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.inter-score-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--white);border-radius:var(--radius-md);
+  padding:8px 16px;margin-bottom:10px;
+  border:1.5px solid var(--blue-light);width:100%;max-width:480px;
+  box-shadow:var(--shadow-sm);
+}
+.inter-score-label{font-size:clamp(12px,1.6vw,15px);color:#6b7280;font-weight:700}
+.inter-score-val{font-size:clamp(18px,2.5vw,24px);font-weight:900;color:var(--blue)}
+.inter-progress{display:flex;gap:6px;justify-content:center;margin-bottom:10px;flex-wrap:wrap}
+
+/* ═══════════════════════════════════════════════════════
+   FLASH TEST
+═══════════════════════════════════════════════════════ */
+.flash-wrap{display:flex;flex-direction:column;align-items:center;padding:clamp(6px,1.5vw,14px) 0}
+.flash-circle{
+  width:clamp(130px,22vw,180px);height:clamp(130px,22vw,180px);
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin-bottom:14px;box-shadow:var(--shadow-md);
+  position:relative;
+}
+.flash-circle::before{
+  content:'';position:absolute;inset:8px;border-radius:50%;
+  border:2px dashed rgba(255,255,255,0.25);
+}
+.flash-circle.correct-flash{animation:flashCorrect 0.5s}
+.flash-q{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(26px,4.5vw,40px);color:#ffffff;
+  text-align:center;line-height:1.25;position:relative;z-index:1;
+}
+.timer-ring-wrap{margin-bottom:10px;position:relative;width:clamp(56px,9vw,72px);height:clamp(56px,9vw,72px)}
+.timer-ring-wrap svg{transform:rotate(-90deg);width:100%;height:100%}
+.timer-num{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(18px,3vw,24px);font-weight:900;color:var(--blue);
+}
+.timer-num.warning{color:var(--red);animation:pulse 0.8s infinite}
+.flash-score-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--white);border-radius:var(--radius-md);
+  padding:clamp(6px,1.2vw,10px) clamp(12px,2vw,18px);
+  margin-bottom:10px;border:1.5px solid var(--blue-light);
+  width:100%;box-shadow:var(--shadow-sm);
+}
+.flash-score-label{font-size:clamp(12px,1.6vw,15px);color:#6b7280;font-weight:700}
+.flash-score-val{font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--blue)}
+.progress-dots{display:flex;gap:clamp(5px,0.8vw,8px);justify-content:center;margin-bottom:10px;flex-wrap:wrap}
+.dot{
+  width:clamp(12px,2vw,16px);height:clamp(12px,2vw,16px);
+  border-radius:50%;background:#e5e7eb;transition:all 0.3s;
+}
+.dot.correct{background:var(--green);box-shadow:0 0 0 3px var(--green-light)}
+.dot.wrong{background:var(--red);box-shadow:0 0 0 3px var(--red-light)}
+.dot.current{background:var(--blue);animation:pulse 1s infinite}
+.flash-input{
+  width:clamp(88px,15vw,110px);height:clamp(52px,8vw,64px);
+  border:3px solid var(--blue-light);border-radius:var(--radius-md);
+  font-size:clamp(26px,4vw,34px);font-weight:800;text-align:center;
+  background:var(--white);color:var(--text);font-family:'Nunito',sans-serif;
+  margin-bottom:10px;transition:all 0.2s;
+}
+.flash-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-light);outline:none}
+.flash-submit{
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:#fff;border:none;border-radius:var(--radius-md);
+  padding:clamp(10px,1.8vw,14px) clamp(20px,3vw,30px);
+  font-size:clamp(14px,2vw,17px);font-weight:800;
+  cursor:pointer;margin-bottom:8px;min-height:50px;
+  box-shadow:var(--shadow-sm);transition:all 0.2s;width:100%;max-width:200px;
+}
+.flash-submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.flash-between{
+  background:var(--white);border-radius:var(--radius-xl);
+  border:3px solid var(--green);padding:clamp(16px,3vw,28px);
+  text-align:center;display:none;flex-direction:column;align-items:center;
+  box-shadow:var(--shadow-md);animation:fadeInUp 0.4s ease;
+}
+.flash-between h3{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(18px,3vw,26px);color:var(--green);margin-bottom:6px;
+}
+.flash-between p{font-size:clamp(13px,1.8vw,16px);color:#6b7280;margin-bottom:12px;font-weight:700}
+.between-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btwn-btn{
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:#fff;border:none;border-radius:var(--radius-md);
+  padding:clamp(10px,1.5vw,14px) clamp(16px,2.5vw,22px);
+  font-size:clamp(13px,1.8vw,16px);font-weight:800;cursor:pointer;
+  min-height:48px;box-shadow:var(--shadow-sm);transition:all 0.2s;
+}
+.btwn-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btwn-btn.retry{background:linear-gradient(135deg,var(--pink),var(--pink-mid));color:var(--blue)}
+.btwn-btn.retry:hover{color:var(--white)}
+.pass-badge{
+  font-size:clamp(13px,1.8vw,16px);
+  background:var(--green-light);color:var(--green);
+  border-radius:20px;padding:6px 16px;font-weight:800;
+  margin-bottom:10px;display:none;
+  border:1.5px solid var(--green);
+}
+
+/* ═══════════════════════════════════════════════════════
+   DIVISION LEARN
+═══════════════════════════════════════════════════════ */
+.div-learn-intro{
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  border-radius:var(--radius-md);padding:clamp(10px,2vw,16px);
+  text-align:center;color:white;margin-bottom:12px;
+  font-size:clamp(13px,1.8vw,16px);font-weight:700;
+}
+.div-connection-pair{
+  background:var(--white);border-radius:var(--radius-md);
+  border:2px solid var(--blue-light);
+  padding:clamp(10px,1.8vw,16px) clamp(12px,2vw,20px);
+  display:flex;align-items:center;gap:clamp(8px,1.5vw,16px);
+  margin-bottom:clamp(6px,1vw,10px);
+  box-shadow:var(--shadow-sm);
+  transition:all 0.2s;
+  cursor:default;
+}
+.div-connection-pair:hover{box-shadow:var(--shadow-md);border-color:var(--blue)}
+.div-num-badge{
+  background:var(--blue);color:#fff;
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(14px,2vw,18px);
+  width:clamp(32px,5vw,42px);height:clamp(32px,5vw,42px);
+  border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.div-eq-group{display:flex;align-items:center;gap:clamp(8px,2vw,20px);flex:1;flex-wrap:wrap}
+.div-eq{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(17px,2.5vw,22px);color:var(--blue);
+  background:var(--blue-light);
+  padding:5px 12px;border-radius:var(--radius-sm);
+}
+.div-eq.mult{background:var(--pink-light);color:var(--blue)}
+.div-eq.divv{background:var(--green-light);color:var(--green)}
+.div-arrow{font-size:clamp(14px,2vw,18px);color:#9ca3af;font-weight:800}
+.div-connection-pair.flash-highlight{animation:flashHighlight 0.6s ease}
+@keyframes flashHighlight{0%,100%{background:var(--white)}50%{background:var(--gold-light)}}
+
+/* ═══════════════════════════════════════════════════════
+   CERTIFICATES
+═══════════════════════════════════════════════════════ */
+.congrats-wrap{
+  background:var(--white);border-radius:var(--radius-xl);
+  border:3px solid var(--gold);
+  padding:clamp(18px,3vw,32px);text-align:center;margin-top:8px;
+  box-shadow:var(--shadow-lg);
+  animation:fadeInUp 0.5s ease;
+}
+.congrats-wrap h2{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(22px,4vw,36px);color:var(--gold);margin-bottom:6px;
+}
+.congrats-wrap p{
+  font-size:clamp(13px,1.8vw,16px);color:#6b7280;
+  margin-bottom:12px;line-height:1.6;font-weight:700;
+}
+.star-row{font-size:clamp(28px,5vw,44px);letter-spacing:4px;margin-bottom:10px;animation:starSpin 1s ease}
+.master-cert{
+  background:linear-gradient(135deg,#fffdf0,#fff9e0);
+  border:4px double var(--gold);border-radius:var(--radius-lg);
+  padding:clamp(16px,3vw,28px);text-align:center;margin:10px 0;
+  position:relative;overflow:hidden;
+}
+.master-cert::before{
+  content:'✦ ✦ ✦';
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  color:var(--gold);opacity:0.3;font-size:14px;letter-spacing:8px;
+}
+.master-cert::after{
+  content:'✦ ✦ ✦';
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  color:var(--gold);opacity:0.3;font-size:14px;letter-spacing:8px;
+}
+.cert-title{
+  font-size:clamp(10px,1.4vw,13px);font-weight:800;
+  color:#92400e;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;
+}
+.cert-name{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(20px,3.5vw,30px);color:var(--blue);margin:8px 0;
+}
+.cert-body{
+  font-size:clamp(12px,1.6vw,15px);color:#6b7280;
+  margin-bottom:10px;line-height:1.7;font-weight:700;
+}
+.cert-stamp{font-size:clamp(40px,7vw,60px);margin-bottom:4px;animation:popIn 0.6s 0.3s both}
+.cert-sig{font-size:clamp(10px,1.4vw,13px);color:#9ca3af;font-style:italic}
+.cert-date{
+  font-size:clamp(11px,1.5vw,14px);color:var(--gold);font-weight:800;
+  background:var(--gold-light);border-radius:20px;padding:3px 12px;
+  display:inline-block;margin-top:6px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROGRESS DASHBOARD
+═══════════════════════════════════════════════════════ */
+.dashboard-wrap{
+  background:var(--white);border-radius:var(--radius-xl);
+  padding:clamp(14px,2.5vw,24px);box-shadow:var(--shadow-md);
+  border:2px solid var(--blue-light);
+}
+.dash-title{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(16px,2.5vw,22px);color:var(--blue);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.dash-table-row{
+  display:flex;align-items:center;gap:10px;
+  padding:clamp(8px,1.5vw,14px);
+  background:var(--cream);border-radius:var(--radius-md);
+  margin-bottom:8px;border:1.5px solid var(--blue-light);
+}
+.dash-table-num{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(20px,3.5vw,28px);color:var(--blue);
+  min-width:clamp(50px,8vw,70px);text-align:center;
+}
+.dash-status{flex:1}
+.dash-pills{display:flex;gap:6px;flex-wrap:wrap}
+.dash-pill{
+  font-size:clamp(10px,1.4vw,13px);font-weight:800;
+  padding:3px 10px;border-radius:20px;
+}
+.dash-pill.pass{background:var(--green-light);color:var(--green)}
+.dash-pill.fail{background:#f3f4f6;color:#9ca3af}
+.dash-pill.due{background:var(--gold-light);color:var(--gold)}
+.dash-date{font-size:clamp(10px,1.4vw,12px);color:#9ca3af;font-weight:700;margin-top:3px}
+.dash-review-btn{
+  background:var(--gold-light);color:var(--gold);
+  border:1.5px solid var(--gold);border-radius:var(--radius-sm);
+  padding:5px 12px;font-size:clamp(11px,1.5vw,13px);font-weight:800;
+  cursor:pointer;transition:all 0.2s;min-height:36px;
+}
+.dash-review-btn:hover{background:var(--gold);color:var(--white)}
+.error-heatmap{
+  margin-top:14px;
+  background:var(--cream);border-radius:var(--radius-md);
+  padding:12px;border:1.5px solid var(--blue-light);
+}
+.error-heatmap h4{font-size:clamp(12px,1.6vw,15px);color:var(--blue);font-weight:800;margin-bottom:8px}
+.heat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(70px,12vw,100px),1fr));gap:6px}
+.heat-cell{
+  background:var(--white);border-radius:var(--radius-sm);
+  padding:6px 8px;text-align:center;border:1px solid var(--blue-light);
+  font-size:clamp(11px,1.5vw,14px);font-weight:700;
+}
+.heat-cell .heat-q{color:var(--blue);font-weight:800}
+.heat-cell .heat-count{color:var(--red);font-size:11px;font-weight:700}
+.heat-cell.hot{background:var(--red-light);border-color:var(--red)}
+.heat-cell.warm{background:#fff7ed;border-color:var(--orange)}
+
+/* ═══════════════════════════════════════════════════════
+   TEACHER SETTINGS PANEL
+═══════════════════════════════════════════════════════ */
+.settings-panel{
+  background:var(--white);border-radius:var(--radius-lg);
+  border:2px solid var(--blue-light);padding:clamp(12px,2vw,20px);
+  margin-bottom:12px;box-shadow:var(--shadow-sm);
+}
+.settings-panel h3{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(15px,2vw,19px);color:var(--blue);
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.setting-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 0;border-bottom:1px solid var(--blue-light);
+  flex-wrap:wrap;gap:8px;
+}
+.setting-row:last-child{border-bottom:none}
+.setting-label{font-size:clamp(12px,1.6vw,15px);color:var(--text);font-weight:700}
+.setting-desc{font-size:clamp(10px,1.3vw,12px);color:#9ca3af;font-weight:600}
+.toggle-wrap{display:flex;gap:4px}
+.toggle-btn{
+  padding:5px 12px;border-radius:20px;font-size:clamp(11px,1.5vw,13px);
+  font-weight:800;cursor:pointer;border:1.5px solid var(--blue-light);
+  background:var(--white);color:#9ca3af;transition:all 0.2s;min-height:36px;
+}
+.toggle-btn.active{background:var(--blue);color:var(--white);border-color:var(--blue)}
+
+/* ═══════════════════════════════════════════════════════
+   PAGE: PROGRESS DASHBOARD
+═══════════════════════════════════════════════════════ */
+#page-dashboard{background:var(--cream)}
+.dash-fab{
+  position:fixed;bottom:16px;right:16px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:white;border:none;border-radius:50%;
+  width:52px;height:52px;font-size:22px;
+  cursor:pointer;box-shadow:var(--shadow-md);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;z-index:100;
+}
+.dash-fab:hover{transform:scale(1.12);box-shadow:var(--shadow-lg)}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════════════ */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--blue-light);border-radius:3px}
+
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- ████████████████ HOME PAGE ████████████████ -->
+<div class="page active" id="page-home">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img id="logo-home" src="" alt="Mr Nathan's Maths Tuition Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Isle of Man</div>
+        <div class="brand-series">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showDashboard()" title="Progress Dashboard">📊</button>
+      <button class="nav-btn" onclick="showSettings()" title="Teacher Settings">⚙️</button>
+    </div>
+  </div>
+
+  <div id="home-review-panel" class="review-panel">
+    <h3>🔁 Daily Review Due</h3>
+    <div class="review-items" id="home-review-items"></div>
+  </div>
+
+  <div class="home-hero">
+    <div class="series-badge">✦ Maths Fluency Series ✦</div>
+    <div class="home-title">Multiplication &amp; Division<br>Tables Mastery</div>
+    <div class="home-sub">6×, 7×, 8×, 9× — tap a table to begin</div>
+  </div>
+
+  <div class="table-grid">
+    <div class="table-card" onclick="goTableHome(6)" id="card-6">
+      <div class="tc-num">6×</div>
+      <div class="tc-label">Six Times Table</div>
+      <div class="tc-badge" id="badge-6"></div>
+      <div class="tc-progress"><div class="tc-progress-fill" id="prog-6" style="width:0%"></div></div>
+    </div>
+    <div class="table-card" onclick="goTableHome(7)" id="card-7">
+      <div class="tc-num">7×</div>
+      <div class="tc-label">Seven Times Table</div>
+      <div class="tc-badge" id="badge-7"></div>
+      <div class="tc-progress"><div class="tc-progress-fill" id="prog-7" style="width:0%"></div></div>
+    </div>
+    <div class="table-card" onclick="goTableHome(8)" id="card-8">
+      <div class="tc-num">8×</div>
+      <div class="tc-label">Eight Times Table</div>
+      <div class="tc-badge" id="badge-8"></div>
+      <div class="tc-progress"><div class="tc-progress-fill" id="prog-8" style="width:0%"></div></div>
+    </div>
+    <div class="table-card" onclick="goTableHome(9)" id="card-9">
+      <div class="tc-num">9×</div>
+      <div class="tc-label">Nine Times Table</div>
+      <div class="tc-badge" id="badge-9"></div>
+      <div class="tc-progress"><div class="tc-progress-fill" id="prog-9" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <button class="combined-btn" onclick="startCombinedFlash()">⚡ Combined Flash Test — All 4 Tables</button>
+
+  <div class="print-section">
+    <div class="print-title">🖨️ Printable Tests</div>
+    <div class="print-btns">
+      <button class="print-btn" onclick="doPrint('mult')">Test 1<br>Multiplication</button>
+      <button class="print-btn" onclick="doPrint('div')">Test 2<br>Division</button>
+      <button class="print-btn" onclick="doPrint('mix')">Test 3<br>Mixed</button>
+    </div>
+  </div>
+</div>
+
+<!-- ████████████████ TABLE HOME ████████████████ -->
+<div class="page" id="page-table-home">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns"><button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button></div>
+  </div>
+  <div id="th-title" class="page-title"></div>
+  <div class="section-nav" id="th-section-nav"></div>
+  <div id="th-content"></div>
+</div>
+
+<!-- ████████████████ LEARN PAGE ████████████████ -->
+<div class="page" id="page-learn">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="learnBack()">← Back</button>
+      <button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button>
+    </div>
+  </div>
+  <div id="learn-title" class="page-title"></div>
+  <div class="learn-layout">
+    <div class="staircase-col" id="staircase-wrap"></div>
+    <div class="question-col">
+      <div class="q-circle" id="learn-circle">
+        <div class="q-circle-text" id="learn-circle-text">?</div>
+      </div>
+      <div class="cycle-indicator" id="cycle-indicator">Cycle 1 of 3</div>
+      <div class="phase-label" id="phase-label"></div>
+      <div class="feedback-row">
+        <span class="tick-icon" id="learn-tick">✓</span>
+        <span class="cross-icon" id="learn-cross">✗</span>
+        <span class="fb-text" id="learn-fb"></span>
+      </div>
+      <button class="advance-btn" id="advance-btn" onclick="advancePhase()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ████████████████ INTERMEDIATE TEST ████████████████ -->
+<div class="page" id="page-inter">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="interBack()">← Back</button>
+      <button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button>
+    </div>
+  </div>
+  <div id="inter-title" class="page-title"></div>
+  <div id="inter-content"></div>
+</div>
+
+<!-- ████████████████ FLASH TEST ████████████████ -->
+<div class="page" id="page-flash">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="flashBack()">← Back</button>
+      <button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button>
+    </div>
+  </div>
+  <div id="flash-title" class="page-title"></div>
+  <div class="flash-wrap" id="flash-active-area">
+    <div class="flash-score-bar">
+      <span class="flash-score-label">Score</span>
+      <span class="flash-score-val" id="flash-score">0 / 0</span>
+    </div>
+    <div class="progress-dots" id="flash-dots"></div>
+    <div class="flash-circle" id="flash-circle">
+      <div class="flash-q" id="flash-q">?</div>
+    </div>
+    <div class="timer-ring-wrap">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="26" fill="none" stroke="#e5e7eb" stroke-width="5"/>
+        <circle id="timer-ring" cx="30" cy="30" r="26" fill="none" stroke="#1a4b8c" stroke-width="5" stroke-dasharray="163.4" stroke-dashoffset="0" stroke-linecap="round"/>
+      </svg>
+      <div class="timer-num" id="timer-num">10</div>
+    </div>
+    <input class="flash-input" id="flash-input" type="number" min="0" max="999" placeholder="?"/>
+    <button class="flash-submit" onclick="flashSubmit()">Submit ✓</button>
+    <div class="feedback-row">
+      <span class="tick-icon" id="flash-tick">✓</span>
+      <span class="cross-icon" id="flash-cross">✗</span>
+      <span class="fb-text" id="flash-fb"></span>
+    </div>
+  </div>
+  <div class="flash-between" id="flash-between">
+    <div class="pass-badge" id="flash-pass-badge">⭐ Flash Test Passed!</div>
+    <h3 id="flash-bm-title">Well done!</h3>
+    <p id="flash-bm-body"></p>
+    <div class="between-btns">
+      <button class="btwn-btn retry" onclick="flashRetry()">↺ Try Again</button>
+      <button class="btwn-btn" id="flash-next-btn" onclick="flashNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ████████████████ DIV LEARN ████████████████ -->
+<div class="page" id="page-divlearn">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showPage('page-flash')">← Back</button>
+      <button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button>
+    </div>
+  </div>
+  <div id="divlearn-title" class="page-title"></div>
+  <div id="divlearn-content"></div>
+  <button class="advance-btn" id="divlearn-next-btn" style="display:block;margin-top:12px" onclick="startFlashDiv()">Continue to Flash Test ÷ →</button>
+</div>
+
+<!-- ████████████████ CONGRATS ████████████████ -->
+<div class="page" id="page-congrats">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Maths Fluency Series</div>
+      </div>
+    </div>
+    <div class="nav-btns"><button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button></div>
+  </div>
+  <div id="congrats-content"></div>
+</div>
+
+<!-- ████████████████ PROGRESS DASHBOARD ████████████████ -->
+<div class="page" id="page-dashboard">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Progress Dashboard</div>
+      </div>
+    </div>
+    <div class="nav-btns"><button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button></div>
+  </div>
+  <div class="page-title">📊 Progress &amp; Review Tracker</div>
+  <div id="dashboard-content"></div>
+</div>
+
+<!-- ████████████████ SETTINGS PAGE ████████████████ -->
+<div class="page" id="page-settings">
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle"><img class="logo-all" src="" alt="Logo"/></div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's Maths Tuition</div>
+        <div class="brand-sub">Teacher Settings</div>
+      </div>
+    </div>
+    <div class="nav-btns"><button class="nav-btn home-btn" onclick="goHome()">⌂ Home</button></div>
+  </div>
+  <div class="page-title">⚙️ Teacher Settings</div>
+  <div id="settings-content"></div>
+</div>
+
+</div><!-- end app -->
+
+<script>
+
+// ═══════════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════════
+const LOGO_B64 = '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';
+const LOGO_SRC = 'data:image/jpeg;base64,' + LOGO_B64;
+
+const TABLES = {
+  6:[6,12,18,24,30,36,42,48,54,60,66,72],
+  7:[7,14,21,28,35,42,49,56,63,70,77,84],
+  8:[8,16,24,32,40,48,56,64,72,80,88,96],
+  9:[9,18,27,36,45,54,63,72,81,90,99,108]
+};
+const GREYED = {6:[1,2,10,11], 7:[1,2,10,11], 8:[1,2,10,11], 9:[1,2,10,11]};
+const NEW_FACTS = [3,4,5,6,7,8,9,12];
+const PHASE1 = [3,4,5,6];
+const PHASE2 = [7,8,9,12];
+const PASS_THRESHOLD = 9;
+const FLASH_TIME = 10;
+const CYCLES_NEEDED = 3;
+
+const SECTIONS = [
+  {id:'ref',      label:'Table'},
+  {id:'learn',    label:'Learn ×'},
+  {id:'inter',    label:'Practice'},
+  {id:'flash',    label:'Flash ×'},
+  {id:'divlearn', label:'Learn ÷'},
+  {id:'flashd',   label:'Flash ÷'},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// SETTINGS (teacher-configurable, persisted in localStorage)
+// ═══════════════════════════════════════════════════════════════
+let settings = {
+  cleanCycles: false, // false = corrected cycles (standard); true = must be clean
+  skipInter: false,   // skip intermediate test
+};
+
+function loadSettings(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mn_settings')||'{}');
+    Object.assign(settings, s);
+  }catch(e){}
+}
+function saveSettings(){
+  try{ localStorage.setItem('mn_settings', JSON.stringify(settings)); }catch(e){}
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PROGRESS DATA (localStorage)
+// ═══════════════════════════════════════════════════════════════
+// tablesPassed[t] = {mult: false|datestamp, div: false|datestamp}
+// errorCounts[t][m] = number of errors on fact t×m
+// reviewSchedule[t] = array of {date: timestamp} for spaced repetition
+// ═══════════════════════════════════════════════════════════════
+let tablesPassed = {
+  6:{mult:false,div:false}, 7:{mult:false,div:false},
+  8:{mult:false,div:false}, 9:{mult:false,div:false}
+};
+let errorCounts = {6:{},7:{},8:{},9:{}};
+let reviewDates = {6:[],7:[],8:[],9:[]};
+// reviewDates[t] = sorted array of scheduled review dates (timestamps)
+// after passing, schedule: +1 day, +3 days, +7 days
+
+const SR_GAPS = [1, 3, 7]; // days after mastery
+
+function loadProgress(){
+  try{
+    const d = JSON.parse(localStorage.getItem('mn_progress')||'{}');
+    if(d.tablesPassed) tablesPassed = d.tablesPassed;
+    if(d.errorCounts) errorCounts = d.errorCounts;
+    if(d.reviewDates) reviewDates = d.reviewDates;
+  }catch(e){}
+}
+function saveProgress(){
+  try{
+    localStorage.setItem('mn_progress', JSON.stringify({tablesPassed, errorCounts, reviewDates}));
+  }catch(e){}
+}
+
+function markTablePassed(t, type){
+  const now = Date.now();
+  tablesPassed[t][type] = now;
+  // if both mult and div now passed, schedule reviews
+  if(tablesPassed[t].mult && tablesPassed[t].div && (!reviewDates[t] || reviewDates[t].length===0)){
+    const base = now;
+    reviewDates[t] = SR_GAPS.map(d => base + d * 86400000);
+  }
+  saveProgress();
+}
+
+function getNextReviewDate(t){
+  const arr = reviewDates[t];
+  if(!arr || arr.length===0) return null;
+  const now = Date.now();
+  const due = arr.filter(d => d <= now + 3600000*2); // within 2 hours buffer = "due today"
+  return due.length > 0 ? due[0] : arr[0];
+}
+
+function isReviewDue(t){
+  const arr = reviewDates[t];
+  if(!arr || arr.length===0) return false;
+  const now = Date.now();
+  return arr.some(d => d <= now + 3600000*2);
+}
+
+function consumeReviewDate(t){
+  // remove the earliest due date, keep remaining
+  const arr = reviewDates[t];
+  if(!arr || arr.length===0) return;
+  arr.shift();
+  saveProgress();
+}
+
+function recordError(t, m){
+  if(!errorCounts[t]) errorCounts[t]={};
+  errorCounts[t][m] = (errorCounts[t][m]||0)+1;
+  saveProgress();
+}
+
+function getWeightedPool(t, type){
+  // Build question pool weighted by error counts
+  const vals = TABLES[t];
+  let pool = [];
+  NEW_FACTS.forEach(m=>{
+    const v = vals[m-1];
+    const errW = Math.min(4, 1 + (errorCounts[t][m]||0)); // max weight 5x
+    for(let i=0;i<errW;i++){
+      pool.push(type==='div'
+        ? {q:`${v} ÷ ${t} = ?`, a:m, t, m}
+        : {q:`${t} × ${m} = ?`, a:v, t, m}
+      );
+    }
+  });
+  return pool;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// APP STATE
+// ═══════════════════════════════════════════════════════════════
+let currentTable = 6;
+let isCombined = false;
+
+let learnState = {
+  table:6, phase:1, cycleNum:1, cyclePos:0, cycleOrder:[],
+  attempt:0, currentMult:0, nextSection:2,
+  cleanCycleErrors:0 // for clean-cycles mode
+};
+
+let flashState = {
+  table:6, type:'mult', questions:[], qIdx:0,
+  correct:0, done:0, finished:false,
+  timerInterval:null, timeLeft:FLASH_TIME,
+  attempt:0, nextSectionIdx:3
+};
+
+let interState = {
+  table:6, questions:[], qIdx:0, correct:0, done:0,
+  attempt:0, nextSectionIdx:0
+};
+
+// ═══════════════════════════════════════════════════════════════
+// INIT / PAGE UTILS
+// ═══════════════════════════════════════════════════════════════
+function setLogos(){
+  document.querySelectorAll('img').forEach(el=>{ el.src = LOGO_SRC; });
+}
+
+function goHome(){updateHomeBadges();showPage('page-home');}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function updateHomeBadges(){
+  [6,7,8,9].forEach(t=>{
+    const b = document.getElementById('badge-'+t);
+    const c = document.getElementById('card-'+t);
+    const p = tablesPassed[t];
+    const bothPassed = p.mult && p.div;
+    const onePassed = p.mult || p.div;
+    const reviewDue = isReviewDue(t);
+
+    if(bothPassed){
+      b.textContent='⭐';
+      c.classList.add('starred');
+    } else if(onePassed){
+      b.textContent='✓';
+      b.style.color='var(--green)';
+      c.classList.remove('starred');
+    } else {
+      b.textContent=reviewDue?'🔁':'';
+      c.classList.remove('starred');
+    }
+
+    // progress bar: 0=nothing, 25=learn done, 50=flash× done, 75=div learn, 100=both passed
+    let pct = 0;
+    if(p.mult) pct = 50;
+    if(p.div) pct = 100;
+    const pf = document.getElementById('prog-'+t);
+    if(pf) pf.style.width = pct+'%';
+  });
+
+  // show review panel if anything due
+  const anyDue = [6,7,8,9].some(t=>isReviewDue(t));
+  const panel = document.getElementById('home-review-panel');
+  if(panel){
+    panel.style.display = anyDue ? 'block' : 'none';
+    if(anyDue){
+      const items = document.getElementById('home-review-items');
+      items.innerHTML = '';
+      [6,7,8,9].filter(t=>isReviewDue(t)).forEach(t=>{
+        const chip = document.createElement('div');
+        chip.className = 'review-chip';
+        const nd = getNextReviewDate(t);
+        const label = nd && nd > Date.now() ? formatDateLabel(nd) : 'Today';
+        chip.innerHTML = `<strong>${t}× Table</strong><span class="due-label">${label}</span>`;
+        chip.onclick = ()=>{ consumeReviewDate(t); startReview(t); };
+        items.appendChild(chip);
+      });
+    }
+  }
+}
+
+function formatDateLabel(ts){
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+}
+
+// ═══════════════════════════════════════════════════════════════
+// DAILY REVIEW MODE
+// ═══════════════════════════════════════════════════════════════
+function startReview(t){
+  // Review = mixed flash test with error-weighted pool
+  currentTable = t;
+  isCombined = false;
+  const pool = [...getWeightedPool(t,'mult'), ...getWeightedPool(t,'div')];
+  const qs = [];
+  for(let i=0;i<10;i++) qs.push({...pool[Math.floor(Math.random()*pool.length)]});
+  flashState = {
+    table:t, type:'review', questions:qs,
+    qIdx:0, correct:0, done:0, finished:false,
+    timerInterval:null, timeLeft:FLASH_TIME, attempt:0, nextSectionIdx:99
+  };
+  document.getElementById('flash-title').textContent = t+'× — Daily Review';
+  beginFlash();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TABLE HOME
+// ═══════════════════════════════════════════════════════════════
+function goTableHome(t){
+  currentTable = t;
+  isCombined = false;
+  document.getElementById('th-title').textContent = t+'× Table';
+  buildSectionNav(t);
+  renderTableSection('ref', t, 0);
+  showPage('page-table-home');
+}
+
+function buildSectionNav(t){
+  const nav = document.getElementById('th-section-nav');
+  nav.innerHTML = '';
+  SECTIONS.forEach((s,i)=>{
+    const b = document.createElement('button');
+    b.className = 'snav-btn'+(i===0?' active':'');
+    b.id = 'snav-'+t+'-'+i;
+    // mark done sections
+    const p = tablesPassed[t];
+    if(s.id==='flash'&&p.mult) b.classList.add('done');
+    if(s.id==='flashd'&&p.div) b.classList.add('done');
+    b.textContent = s.label;
+    b.onclick = ()=>{
+      nav.querySelectorAll('.snav-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      renderTableSection(s.id, t, i);
+    };
+    nav.appendChild(b);
+  });
+}
+
+function renderTableSection(secId, t, secIdx){
+  if(secId==='ref'){
+    document.getElementById('th-content').innerHTML = buildStaircaseHTML(t, false);
+  } else if(secId==='learn'){
+    startLearn(t, secIdx);
+  } else if(secId==='inter'){
+    startInter(t, secIdx);
+  } else if(secId==='flash'){
+    startFlashMult(t, secIdx);
+  } else if(secId==='divlearn'){
+    startDivLearn(t, secIdx);
+  } else if(secId==='flashd'){
+    startFlashDiv();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STAIRCASE HTML
+// ═══════════════════════════════════════════════════════════════
+function buildStaircaseHTML(t, interactive, phase){
+  const vals = TABLES[t];
+  const greyed = GREYED[t];
+  const boxes = [[1,2,3],[4,5,6],[7,8,9],[10,11,12]];
+  let html = '<div class="staircase">';
+  boxes.forEach((mults)=>{
+    html += `<div class="stair-row"><div class="fact-box">`;
+    mults.forEach(m=>{
+      const val = vals[m-1];
+      const isGreyed = greyed.includes(m);
+      html += `<div class="fact-row">`;
+      html += `<div class="fact-n">${m}</div>`;
+      if(interactive){
+        if(isGreyed){
+          html += `<div class="fact-val greyed">${val}</div>`;
+        } else {
+          html += `<input class="fact-input" id="fi-${m}" type="number" min="0" max="999" readonly tabindex="-1" placeholder=""/>`;
+        }
+      } else {
+        if(isGreyed){
+          html += `<div class="fact-val greyed">${val}</div>`;
+        } else {
+          html += `<div class="fact-val">${val}</div>`;
+        }
+      }
+      html += `</div>`;
+    });
+    html += `</div></div>`;
+  });
+  html += '</div>';
+  return html;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// LEARN PHASE
+// ═══════════════════════════════════════════════════════════════
+function startLearn(t, secIdx){
+  currentTable = t;
+  learnState = {
+    table:t, phase:1, cycleNum:1, cyclePos:0, cycleOrder:[],
+    attempt:0, currentMult:0, nextSection:secIdx+1, cleanCycleErrors:0
+  };
+  document.getElementById('learn-title').textContent = t+'× — Learning Phase';
+  renderLearnPhase();
+  showPage('page-learn');
+}
+
+function renderLearnPhase(){
+  const ls = learnState;
+  const t = ls.table;
+  const phaseGroup = ls.phase===1?PHASE1:ls.phase===2?PHASE2:NEW_FACTS;
+  const phaseNames = {
+    1:'Phase 1: Facts ×3, 4, 5, 6',
+    2:'Phase 2: Facts ×7, 8, 9, 12',
+    3:'Phase 3: All 8 Facts'
+  };
+  document.getElementById('phase-label').textContent = phaseNames[ls.phase];
+  document.getElementById('cycle-indicator').textContent = 'Cycle '+ls.cycleNum+' of '+CYCLES_NEEDED;
+  document.getElementById('staircase-wrap').innerHTML = buildStaircaseHTML(t, true, ls.phase);
+  clearPhaseInputs(phaseGroup);
+  document.getElementById('advance-btn').style.display='none';
+  document.getElementById('learn-tick').style.display='none';
+  document.getElementById('learn-cross').style.display='none';
+  document.getElementById('learn-fb').textContent='';
+  ls.cleanCycleErrors = 0;
+  newCycleOrder(phaseGroup);
+  askNextLearnQ();
+}
+
+function clearPhaseInputs(group){
+  group.forEach(m=>{
+    const el = document.getElementById('fi-'+m);
+    if(el){ el.value=''; el.className='fact-input'; el.removeAttribute('readonly'); }
+  });
+}
+
+function newCycleOrder(group){
+  let arr = [...group];
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  learnState.cycleOrder = arr;
+  learnState.cyclePos = 0;
+}
+
+function askNextLearnQ(){
+  const ls = learnState;
+  const phaseGroup = ls.phase===1?PHASE1:ls.phase===2?PHASE2:NEW_FACTS;
+
+  if(ls.cyclePos >= ls.cycleOrder.length){
+    ls.cycleNum++;
+
+    // Clean cycles mode: if errors this cycle, don't count it
+    if(settings.cleanCycles && ls.cleanCycleErrors > 0){
+      ls.cycleNum--; // doesn't count
+      ls.cleanCycleErrors = 0;
+      showLearnFeedback('Need a clean cycle — try again!','info');
+    }
+
+    if(ls.cycleNum > CYCLES_NEEDED){
+      document.getElementById('learn-circle-text').textContent='✓ Done!';
+      document.getElementById('advance-btn').style.display='block';
+      document.getElementById('cycle-indicator').textContent='Phase complete!';
+      return;
+    }
+    document.getElementById('cycle-indicator').textContent='Cycle '+ls.cycleNum+' of '+CYCLES_NEEDED;
+    clearPhaseInputs(phaseGroup);
+    newCycleOrder(phaseGroup);
+    ls.cleanCycleErrors = 0;
+  }
+
+  const m = ls.cycleOrder[ls.cyclePos];
+  ls.currentMult = m;
+  ls.attempt = 0;
+
+  const t = ls.table;
+  document.getElementById('learn-circle-text').innerHTML = t+' × '+m+' =';
+
+  phaseGroup.forEach(mm=>{
+    const el = document.getElementById('fi-'+mm);
+    if(el){ el.className='fact-input'+(mm===m?' highlighted':''); }
+  });
+
+  const target = document.getElementById('fi-'+m);
+  if(target){
+    target.value='';
+    target.readOnly = false;
+    setTimeout(()=>target.focus(), 60);
+    target.onkeydown = e=>{ if(e.key==='Enter') checkLearnAnswer(); };
+    target.oninput = ()=>{
+      const v = parseInt(target.value, 10);
+      const ans = TABLES[t][m-1];
+      if(target.value.length >= String(ans).length) checkLearnAnswer();
+    };
+  }
+  clearLearnFeedback();
+}
+
+function checkLearnAnswer(){
+  const ls = learnState;
+  const t = ls.table;
+  const m = ls.currentMult;
+  const ans = TABLES[t][m-1];
+  const el = document.getElementById('fi-'+m);
+  if(!el) return;
+  const val = parseInt(el.value, 10);
+  if(isNaN(val)) return;
+
+  if(val === ans){
+    el.value = ans;
+    el.className='fact-input correct-fill';
+    el.readOnly=true;
+    showLearnFeedback('Correct!','correct',true);
+    playChime();
+    ls.cyclePos++;
+    setTimeout(()=>askNextLearnQ(), 850);
+  } else {
+    ls.attempt++;
+    ls.cleanCycleErrors++;
+    recordError(t, m);
+    if(ls.attempt===1){
+      el.className='fact-input wrong-fill';
+      showLearnFeedback('Try again!','wrong',false,true);
+      el.value='';
+      setTimeout(()=>el.focus(), 50);
+    } else {
+      showLearnFeedback('The answer is '+ans,'info');
+      el.value=ans; el.className='fact-input correct-fill'; el.readOnly=true;
+      const phaseGroup = ls.phase===1?PHASE1:ls.phase===2?PHASE2:NEW_FACTS;
+      setTimeout(()=>{
+        clearLearnFeedback();
+        clearPhaseInputs(phaseGroup);
+        ls.cyclePos++;
+        askNextLearnQ();
+      }, 1800);
+    }
+  }
+}
+
+function showLearnFeedback(msg, type, tick=false, cross=false){
+  document.getElementById('learn-tick').style.display = tick?'inline':'none';
+  document.getElementById('learn-cross').style.display = cross?'inline':'none';
+  const fb = document.getElementById('learn-fb');
+  fb.textContent = msg;
+  fb.className = 'fb-text '+type;
+}
+function clearLearnFeedback(){
+  document.getElementById('learn-tick').style.display='none';
+  document.getElementById('learn-cross').style.display='none';
+  document.getElementById('learn-fb').textContent='';
+  document.getElementById('learn-fb').className='fb-text';
+}
+
+function advancePhase(){
+  const ls = learnState;
+  document.getElementById('advance-btn').style.display='none';
+  if(ls.phase===1){
+    ls.phase=2; ls.cycleNum=1; renderLearnPhase();
+  } else if(ls.phase===2){
+    ls.phase=3; ls.cycleNum=1; renderLearnPhase();
+  } else {
+    // all 3 phases done → go to intermediate test (unless skipped in settings)
+    if(settings.skipInter){
+      startFlashMult(ls.table, ls.nextSection);
+    } else {
+      startInter(ls.table, ls.nextSection);
+    }
+  }
+}
+
+function learnBack(){ showPage('page-table-home'); }
+
+// ═══════════════════════════════════════════════════════════════
+// INTERMEDIATE TEST
+// (table hidden, no timer, all 8 facts × 1 each)
+// ═══════════════════════════════════════════════════════════════
+function startInter(t, secIdx){
+  currentTable = t;
+  const vals = TABLES[t];
+  // build shuffled set of all 8 facts
+  let pool = [...NEW_FACTS];
+  for(let i=pool.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [pool[i],pool[j]]=[pool[j],pool[i]];
+  }
+  interState = {
+    table:t,
+    questions: pool.map(m=>({q:`${t} × ${m} = ?`, a:vals[m-1], m})),
+    qIdx:0, correct:0, done:0, attempt:0,
+    nextSectionIdx: secIdx
+  };
+  document.getElementById('inter-title').textContent = t+'× — Practice Round';
+  renderInterPage();
+  showPage('page-inter');
+}
+
+function renderInterPage(){
+  const is = interState;
+  const total = is.questions.length;
+
+  // score bar
+  const dotsHtml = is.questions.map((_,i)=>{
+    let cls = 'dot';
+    if(i < is.done){
+      const correct = is.questions[i]._result;
+      cls += correct ? ' correct' : ' wrong';
+    } else if(i===is.qIdx) cls += ' current';
+    return `<div class="${cls}" id="idot-${i}"></div>`;
+  }).join('');
+
+  const q = is.questions[is.qIdx];
+  const html = `
+  <div class="inter-wrap">
+    <div class="inter-score-bar">
+      <span class="inter-score-label">Score</span>
+      <span class="inter-score-val" id="inter-score">${is.correct} / ${is.done}</span>
+    </div>
+    <div class="inter-progress">${dotsHtml}</div>
+    <div class="inter-card">
+      <div class="inter-badge">No table — no timer</div>
+      <div class="inter-q" id="inter-q">${q?q.q:'Done!'}</div>
+      <input class="inter-input" id="inter-input" type="number" min="0" max="999" placeholder="?"/>
+      <br/>
+      <button class="inter-submit" onclick="interSubmit()">Submit ✓</button>
+      <div class="feedback-row" style="margin-top:10px">
+        <span class="tick-icon" id="inter-tick">✓</span>
+        <span class="cross-icon" id="inter-cross">✗</span>
+        <span class="fb-text" id="inter-fb"></span>
+      </div>
+    </div>
+  </div>`;
+  document.getElementById('inter-content').innerHTML = html;
+  setTimeout(()=>{
+    const inp = document.getElementById('inter-input');
+    if(inp){
+      inp.focus();
+      inp.addEventListener('keydown', e=>{ if(e.key==='Enter') interSubmit(); });
+      inp.addEventListener('input', ()=>{
+        const v = parseInt(inp.value, 10);
+        const q2 = interState.questions[interState.qIdx];
+        if(q2 && inp.value.length >= String(q2.a).length) interSubmit();
+      });
+    }
+  }, 80);
+}
+
+function interSubmit(){
+  const is = interState;
+  if(is.qIdx >= is.questions.length) return;
+  const inp = document.getElementById('inter-input');
+  if(!inp) return;
+  const val = parseInt(inp.value, 10);
+  const q = is.questions[is.qIdx];
+  if(isNaN(val)){
+    document.getElementById('inter-fb').textContent='Enter a number!';
+    document.getElementById('inter-fb').className='fb-text info';
+    return;
+  }
+
+  if(val === q.a){
+    is.correct++; is.done++;
+    q._result = true;
+    inp.className='inter-input correct';
+    document.getElementById('inter-tick').style.display='inline';
+    document.getElementById('inter-cross').style.display='none';
+    document.getElementById('inter-fb').textContent='Correct!';
+    document.getElementById('inter-fb').className='fb-text correct';
+    document.getElementById('inter-score').textContent=is.correct+' / '+is.done;
+    updateInterDot(is.qIdx,'correct');
+    playChime();
+    is.qIdx++;
+    setTimeout(()=>{
+      if(is.qIdx >= is.questions.length) finishInter();
+      else renderInterPage();
+    }, 900);
+  } else {
+    is.attempt++;
+    recordError(is.table, q.m);
+    if(is.attempt===1){
+      inp.className='inter-input wrong';
+      document.getElementById('inter-cross').style.display='inline';
+      document.getElementById('inter-tick').style.display='none';
+      document.getElementById('inter-fb').textContent='Try again!';
+      document.getElementById('inter-fb').className='fb-text wrong';
+      inp.value='';
+      setTimeout(()=>inp.focus(),50);
+    } else {
+      // show answer and move on
+      is.done++;
+      q._result = false;
+      is.attempt=0;
+      inp.value = q.a;
+      inp.className='inter-input correct';
+      document.getElementById('inter-fb').textContent='The answer is '+q.a;
+      document.getElementById('inter-fb').className='fb-text info';
+      document.getElementById('inter-score').textContent=is.correct+' / '+is.done;
+      updateInterDot(is.qIdx,'wrong');
+      is.qIdx++;
+      setTimeout(()=>{
+        if(is.qIdx >= is.questions.length) finishInter();
+        else renderInterPage();
+      }, 1800);
+    }
+  }
+}
+
+function updateInterDot(idx, cls){
+  const d = document.getElementById('idot-'+idx);
+  if(d) d.className='dot '+cls;
+}
+
+function finishInter(){
+  const is = interState;
+  const pct = is.done>0 ? Math.round(is.correct/is.done*100) : 0;
+  const msg = pct>=90 ? 'Excellent! 🎉 Ready for the flash test!' :
+              pct>=70 ? 'Good work! Now try the flash test.' :
+              'Keep going — the flash test is next!';
+  document.getElementById('inter-content').innerHTML = `
+  <div class="inter-wrap">
+    <div class="inter-card">
+      <div class="inter-badge">Practice Complete</div>
+      <div style="font-size:clamp(40px,7vw,60px);margin:10px 0">
+        ${pct>=90?'🎉':pct>=70?'👍':'💪'}
+      </div>
+      <div class="inter-q" style="font-size:clamp(24px,4vw,36px)">${is.correct}/${is.done}</div>
+      <p style="font-size:clamp(14px,2vw,17px);color:#6b7280;font-weight:700;margin:10px 0">${msg}</p>
+      <button class="inter-submit" onclick="startFlashMult(${is.table}, ${is.nextSectionIdx})" style="max-width:260px">
+        Continue to Flash Test ×
+      </button>
+    </div>
+  </div>`;
+}
+
+function interBack(){ showPage('page-table-home'); }
+
+// ═══════════════════════════════════════════════════════════════
+// FLASH TEST
+// ═══════════════════════════════════════════════════════════════
+function makeFlashQuestions(t, type){
+  const pool = getWeightedPool(t, type);
+  const qs = [];
+  for(let i=0;i<10;i++) qs.push({...pool[Math.floor(Math.random()*pool.length)]});
+  return qs;
+}
+
+function makeFlashQsCombined(type){
+  const pool = [];
+  [6,7,8,9].forEach(t=>{
+    const vals = TABLES[t];
+    NEW_FACTS.forEach(m=>{
+      const v = vals[m-1];
+      if(type==='div') pool.push({q:`${v} ÷ ${t} = ?`,a:m,t,m});
+      else if(type==='mult') pool.push({q:`${t} × ${m} = ?`,a:v,t,m});
+      else pool.push(Math.random()<0.5?{q:`${t} × ${m} = ?`,a:v,t,m}:{q:`${v} ÷ ${t} = ?`,a:m,t,m});
+    });
+  });
+  const qs = [];
+  for(let i=0;i<10;i++) qs.push({...pool[Math.floor(Math.random()*pool.length)]});
+  return qs;
+}
+
+function startFlashMult(t, secIdx){
+  currentTable = t;
+  flashState = {
+    table:t, type:'mult',
+    questions:makeFlashQuestions(t,'mult'),
+    qIdx:0, correct:0, done:0, finished:false,
+    timerInterval:null, timeLeft:FLASH_TIME, attempt:0,
+    nextSectionIdx: secIdx+1
+  };
+  document.getElementById('flash-title').textContent = t+'× — Flash Test ×';
+  beginFlash();
+}
+
+function startFlashDiv(){
+  const t = currentTable;
+  flashState = {
+    table:t, type:'div',
+    questions:makeFlashQuestions(t,'div'),
+    qIdx:0, correct:0, done:0, finished:false,
+    timerInterval:null, timeLeft:FLASH_TIME, attempt:0,
+    nextSectionIdx:99
+  };
+  document.getElementById('flash-title').textContent = t+'× — Flash Test ÷';
+  beginFlash();
+}
+
+function startCombinedFlash(){
+  isCombined = true;
+  flashState = {
+    table:0, type:'mix',
+    questions:makeFlashQsCombined('mix'),
+    qIdx:0, correct:0, done:0, finished:false,
+    timerInterval:null, timeLeft:FLASH_TIME, attempt:0,
+    nextSectionIdx:99
+  };
+  document.getElementById('flash-title').textContent = 'Combined Flash Test — All Tables';
+  beginFlash();
+}
+
+function beginFlash(){
+  clearFlashTimer();
+  const fs = flashState;
+  fs.questions = fs.table ? makeFlashQuestions(fs.table, fs.type) : makeFlashQsCombined(fs.type);
+  fs.qIdx=0; fs.correct=0; fs.done=0; fs.finished=false; fs.attempt=0;
+  document.getElementById('flash-active-area').style.display='flex';
+  document.getElementById('flash-between').style.display='none';
+  document.getElementById('flash-pass-badge').style.display='none';
+  buildFlashDots();
+  updateFlashScore();
+  showPage('page-flash');
+  flashNextQ();
+}
+
+function buildFlashDots(){
+  const d = document.getElementById('flash-dots'); d.innerHTML='';
+  flashState.questions.forEach((_,i)=>{
+    const dot = document.createElement('div');
+    dot.className='dot'+(i===0?' current':'');
+    dot.id='fdot-'+i;
+    d.appendChild(dot);
+  });
+}
+
+function updateFlashDot(idx,cls){const d=document.getElementById('fdot-'+idx);if(d)d.className='dot '+cls;}
+function updateFlashScore(){document.getElementById('flash-score').textContent=flashState.correct+' / '+flashState.done;}
+
+function flashNextQ(){
+  const fs = flashState;
+  if(fs.qIdx >= fs.questions.length){finishFlash();return;}
+  const q = fs.questions[fs.qIdx];
+  document.getElementById('flash-q').textContent = q.q;
+  document.getElementById('flash-input').value='';
+  document.getElementById('flash-input').disabled=false;
+  document.getElementById('flash-tick').style.display='none';
+  document.getElementById('flash-cross').style.display='none';
+  document.getElementById('flash-fb').textContent='';
+  document.getElementById('flash-fb').className='fb-text';
+  fs.attempt=0;
+  updateFlashDot(fs.qIdx,'current');
+  startFlashTimer();
+  setTimeout(()=>document.getElementById('flash-input').focus(), 60);
+}
+
+function startFlashTimer(){
+  clearFlashTimer();
+  flashState.timeLeft = FLASH_TIME;
+  updateTimerRing(FLASH_TIME);
+  flashState.timerInterval = setInterval(()=>{
+    flashState.timeLeft--;
+    updateTimerRing(flashState.timeLeft);
+    if(flashState.timeLeft<=0){
+      clearFlashTimer();
+      const fs = flashState;
+      document.getElementById('flash-cross').style.display='inline';
+      document.getElementById('flash-fb').textContent='Time up! Answer: '+fs.questions[fs.qIdx].a;
+      document.getElementById('flash-fb').className='fb-text info';
+      if(fs.questions[fs.qIdx].m) recordError(fs.questions[fs.qIdx].t||fs.table, fs.questions[fs.qIdx].m);
+      fs.done++; updateFlashDot(fs.qIdx,'wrong'); updateFlashScore(); fs.qIdx++;
+      setTimeout(()=>flashNextQ(), 1500);
+    }
+  },1000);
+}
+
+function updateTimerRing(t){
+  const circ = 163.4;
+  const offset = circ - (circ*(t/FLASH_TIME));
+  const ring = document.getElementById('timer-ring');
+  const num = document.getElementById('timer-num');
+  if(ring) ring.setAttribute('stroke-dashoffset', offset);
+  if(num){
+    num.textContent = Math.max(0,t);
+    num.className = 'timer-num'+(t<=5?' warning':'');
+    ring.setAttribute('stroke', t<=5?'#c0392b':'#1a4b8c');
+  }
+}
+
+function clearFlashTimer(){
+  if(flashState.timerInterval){clearInterval(flashState.timerInterval);flashState.timerInterval=null;}
+}
+
+function flashSubmit(){
+  clearFlashTimer();
+  const fs = flashState;
+  if(fs.finished) return;
+  const inp = document.getElementById('flash-input');
+  const val = parseInt(inp.value, 10);
+  const ans = fs.questions[fs.qIdx].a;
+  const m = fs.questions[fs.qIdx].m;
+  const t = fs.questions[fs.qIdx].t || fs.table;
+  if(isNaN(val)){
+    document.getElementById('flash-fb').textContent='Enter a number!';
+    document.getElementById('flash-fb').className='fb-text info';
+    startFlashTimer();
+    return;
+  }
+  if(val === ans){
+    fs.correct++; fs.done++;
+    document.getElementById('flash-tick').style.display='inline';
+    document.getElementById('flash-cross').style.display='none';
+    document.getElementById('flash-fb').textContent='Correct!';
+    document.getElementById('flash-fb').className='fb-text correct';
+    document.getElementById('flash-circle').classList.add('correct-flash');
+    setTimeout(()=>document.getElementById('flash-circle').classList.remove('correct-flash'),500);
+    playChime();
+    updateFlashDot(fs.qIdx,'correct');
+    updateFlashScore();
+    fs.qIdx++;
+    setTimeout(()=>flashNextQ(), 900);
+  } else {
+    fs.attempt++;
+    if(m) recordError(t, m);
+    document.getElementById('flash-cross').style.display='inline';
+    document.getElementById('flash-tick').style.display='none';
+    if(fs.attempt===1){
+      document.getElementById('flash-fb').textContent='Try again!';
+      document.getElementById('flash-fb').className='fb-text wrong';
+      inp.value='';
+      startFlashTimer();
+      setTimeout(()=>inp.focus(), 50);
+    } else {
+      document.getElementById('flash-fb').textContent='The answer is '+ans;
+      document.getElementById('flash-fb').className='fb-text info';
+      fs.done++;
+      updateFlashDot(fs.qIdx,'wrong');
+      updateFlashScore();
+      fs.qIdx++;
+      inp.disabled=true;
+      setTimeout(()=>flashNextQ(), 1800);
+    }
+  }
+}
+
+function finishFlash(){
+  clearFlashTimer();
+  const fs = flashState;
+  const isPassing = fs.correct >= PASS_THRESHOLD;
+
+  if(!isCombined && fs.type !== 'review'){
+    if(fs.type==='mult' && isPassing) markTablePassed(fs.table, 'mult');
+    if(fs.type==='div' && isPassing) markTablePassed(fs.table, 'div');
+  }
+
+  const bothPassed = !isCombined && tablesPassed[fs.table] &&
+    tablesPassed[fs.table].mult && tablesPassed[fs.table].div;
+  const allPassed = [6,7,8,9].every(t=>tablesPassed[t].mult && tablesPassed[t].div);
+
+  document.getElementById('flash-active-area').style.display='none';
+  const between = document.getElementById('flash-between');
+  between.style.display='flex';
+
+  const pct = fs.done>0 ? Math.round(fs.correct/fs.done*100) : 0;
+  document.getElementById('flash-pass-badge').style.display = isPassing?'block':'none';
+  document.getElementById('flash-bm-title').textContent =
+    pct>=90 ? 'Excellent! 🎉' : pct>=70 ? 'Good work! 👍' : 'Keep practising! 💪';
+  let body = `You scored ${fs.correct} out of ${fs.done} (${pct}%).`;
+  if(!isPassing) body += ' You need '+PASS_THRESHOLD+'/10 to pass.';
+  document.getElementById('flash-bm-body').textContent = body;
+
+  const nb = document.getElementById('flash-next-btn');
+  if(allPassed){
+    nb.textContent='See Certificate →';
+    nb.onclick=()=>showMasterCongrats();
+  } else if(bothPassed && isPassing){
+    nb.textContent='See Certificate →';
+    nb.onclick=()=>showTableCongrats(fs.table);
+  } else if(fs.type==='mult' && !isCombined){
+    nb.textContent='Learn ÷ →';
+    nb.onclick=()=>startDivLearn(fs.table);
+  } else if(fs.type==='review'){
+    nb.textContent='Back to Home';
+    nb.onclick=()=>goHome();
+  } else {
+    nb.textContent='Back to Home';
+    nb.onclick=()=>goHome();
+  }
+}
+
+function flashRetry(){
+  clearFlashTimer();
+  beginFlash();
+}
+function flashBack(){
+  clearFlashTimer();
+  if(isCombined) goHome();
+  else showPage('page-table-home');
+}
+function flashNext(){ /* handled by onclick set in finishFlash */ }
+
+// ═══════════════════════════════════════════════════════════════
+// DIV LEARN PAGE (explicit connection)
+// ═══════════════════════════════════════════════════════════════
+function startDivLearn(t){
+  currentTable = t;
+  document.getElementById('divlearn-title').textContent = t+'× — Division Facts';
+  const vals = TABLES[t];
+  let html = `<div class="div-learn-intro">
+    These are the SAME facts in reverse — if you know ${t}×, you already know ÷${t}!
+  </div>`;
+  NEW_FACTS.forEach(m=>{
+    const v = vals[m-1];
+    html += `
+    <div class="div-connection-pair" id="dcp-${m}" onclick="highlightPair(${m})">
+      <div class="div-num-badge">${m}</div>
+      <div class="div-eq-group">
+        <div class="div-eq mult">${t} × ${m} = ${v}</div>
+        <div class="div-arrow">⟺</div>
+        <div class="div-eq divv">${v} ÷ ${t} = ${m}</div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('divlearn-content').innerHTML = html;
+  showPage('page-divlearn');
+}
+
+function highlightPair(m){
+  const el = document.getElementById('dcp-'+m);
+  if(el){
+    el.classList.remove('flash-highlight');
+    void el.offsetWidth;
+    el.classList.add('flash-highlight');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CONGRATS / CERTIFICATES
+// ═══════════════════════════════════════════════════════════════
+function showTableCongrats(t){
+  const dateStr = new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('congrats-content').innerHTML = `
+    <div class="congrats-wrap">
+      <div class="star-row">⭐⭐⭐</div>
+      <h2>Table Mastered!</h2>
+      <p>You have mastered the <strong>${t}× table</strong> — both multiplication and division flash tests passed with ${PASS_THRESHOLD}/10 or better!</p>
+      <div class="master-cert">
+        <div class="cert-title">Certificate of Achievement</div>
+        <div class="cert-stamp">🏆</div>
+        <div class="cert-name">${t}× Table Master</div>
+        <div class="cert-body">
+          This student has demonstrated full fluency in the ${t} times table,<br>
+          recalling multiplication and division facts instantly.
+        </div>
+        <div class="cert-date">Awarded: ${dateStr}</div>
+        <div class="cert-sig">Mr Nathan's Maths Tuition — Maths Fluency Series — Isle of Man</div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+        <button class="btwn-btn retry" onclick="goTableHome(${t})">Continue ${t}×</button>
+        <button class="btwn-btn" onclick="goHome()">Home</button>
+      </div>
+    </div>`;
+  updateHomeBadges();
+  showPage('page-congrats');
+}
+
+function showMasterCongrats(){
+  const dateStr = new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('congrats-content').innerHTML = `
+    <div class="congrats-wrap" style="border-color:var(--gold)">
+      <div class="star-row">🌟🌟🌟🌟</div>
+      <h2 style="color:var(--gold);font-size:clamp(22px,4vw,38px)">MASTER CERTIFICATE!</h2>
+      <p>Outstanding! You have mastered <strong>all four tables</strong> — 6×, 7×, 8× and 9× — in both multiplication and division!</p>
+      <div class="master-cert">
+        <div class="cert-title">Certificate of Mastery</div>
+        <div class="cert-stamp">👑</div>
+        <div class="cert-name" style="font-size:clamp(20px,3.5vw,32px)">Tables Champion</div>
+        <div class="cert-body">
+          This student has achieved complete fluency across the<br>
+          6×, 7×, 8× and 9× multiplication and division tables,<br>
+          passing all flash tests with ${PASS_THRESHOLD}/10 or better.<br><br>
+          <strong>A truly outstanding achievement!</strong>
+        </div>
+        <div class="cert-date">Awarded: ${dateStr}</div>
+        <div class="cert-sig">Mr Nathan's Maths Tuition — Maths Fluency Series — Isle of Man</div>
+      </div>
+      <button class="btwn-btn" onclick="goHome()" style="margin-top:12px">Back to Home 🏠</button>
+    </div>`;
+  updateHomeBadges();
+  showPage('page-congrats');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PROGRESS DASHBOARD
+// ═══════════════════════════════════════════════════════════════
+function showDashboard(){
+  renderDashboard();
+  showPage('page-dashboard');
+}
+
+function renderDashboard(){
+  const container = document.getElementById('dashboard-content');
+  let html = '<div class="dashboard-wrap">';
+  html += '<div class="dash-title">📅 Table Progress</div>';
+
+  [6,7,8,9].forEach(t=>{
+    const p = tablesPassed[t];
+    const multDate = p.mult ? new Date(p.mult).toLocaleDateString('en-GB') : null;
+    const divDate = p.div ? new Date(p.div).toLocaleDateString('en-GB') : null;
+    const nextRev = getNextReviewDate(t);
+    const reviewDue = isReviewDue(t);
+    const nextRevStr = nextRev ? formatDateLabel(nextRev) : null;
+
+    html += `<div class="dash-table-row">
+      <div class="dash-table-num">${t}×</div>
+      <div class="dash-status">
+        <div class="dash-pills">
+          <span class="dash-pill ${p.mult?'pass':'fail'}">× ${p.mult?'✓ Passed':'Pending'}</span>
+          <span class="dash-pill ${p.div?'pass':'fail'}">÷ ${p.div?'✓ Passed':'Pending'}</span>
+          ${reviewDue ? `<span class="dash-pill due">🔁 Review Due</span>` : nextRevStr ? `<span class="dash-pill" style="background:#f0f4ff;color:#6b7280">Next review: ${nextRevStr}</span>` : ''}
+        </div>
+        <div class="dash-date">
+          ${multDate ? `× passed: ${multDate}` : ''}
+          ${multDate && divDate ? ' · ' : ''}
+          ${divDate ? `÷ passed: ${divDate}` : ''}
+        </div>
+      </div>
+      ${(p.mult && p.div) ? `<button class="dash-review-btn" onclick="consumeReviewDate(${t});startReview(${t})">Review</button>` : ''}
+    </div>`;
+  });
+  html += '</div>';
+
+  // Error heatmap
+  html += buildErrorHeatmap();
+
+  container.innerHTML = html;
+}
+
+function buildErrorHeatmap(){
+  let hasErrors = false;
+  let cells = '';
+  [6,7,8,9].forEach(t=>{
+    NEW_FACTS.forEach(m=>{
+      const count = (errorCounts[t]&&errorCounts[t][m])||0;
+      if(count>0){
+        hasErrors = true;
+        const cls = count>=5 ? 'hot' : count>=3 ? 'warm' : '';
+        cells += `<div class="heat-cell ${cls}">
+          <div class="heat-q">${t}×${m}</div>
+          <div class="heat-count">${count} error${count!==1?'s':''}</div>
+        </div>`;
+      }
+    });
+  });
+  if(!hasErrors) return `<div class="error-heatmap" style="margin-top:12px"><h4>🎯 Error Analysis</h4><p style="color:#9ca3af;font-size:14px;font-weight:700">No errors recorded yet — keep going!</p></div>`;
+  return `<div class="error-heatmap" style="margin-top:12px"><h4>🎯 Error Analysis — Facts to Focus On</h4><div class="heat-grid">${cells}</div></div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TEACHER SETTINGS
+// ═══════════════════════════════════════════════════════════════
+function showSettings(){
+  renderSettings();
+  showPage('page-settings');
+}
+
+function renderSettings(){
+  const s = settings;
+  document.getElementById('settings-content').innerHTML = `
+  <div class="settings-panel">
+    <h3>⚙️ Teacher Settings</h3>
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Learning Cycle Mode</div>
+        <div class="setting-desc">Clean = 3 error-free cycles required; Corrected = errors allowed</div>
+      </div>
+      <div class="toggle-wrap">
+        <button class="toggle-btn ${!s.cleanCycles?'active':''}" onclick="setSetting('cleanCycles',false);renderSettings()">Corrected</button>
+        <button class="toggle-btn ${s.cleanCycles?'active':''}" onclick="setSetting('cleanCycles',true);renderSettings()">Clean</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Intermediate Test</div>
+        <div class="setting-desc">Practice round between learning and flash test (no table, no timer)</div>
+      </div>
+      <div class="toggle-wrap">
+        <button class="toggle-btn ${!s.skipInter?'active':''}" onclick="setSetting('skipInter',false);renderSettings()">On</button>
+        <button class="toggle-btn ${s.skipInter?'active':''}" onclick="setSetting('skipInter',true);renderSettings()">Skip</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Reset All Progress</div>
+        <div class="setting-desc">Clear all saved data — use with care!</div>
+      </div>
+      <button class="toggle-btn" onclick="confirmReset()" style="background:var(--red-light);color:var(--red);border-color:var(--red)">Reset</button>
+    </div>
+  </div>
+  <div class="settings-panel">
+    <h3>📋 About This Product</h3>
+    <p style="font-size:clamp(12px,1.6vw,15px);color:#6b7280;font-weight:700;line-height:1.7">
+      Mr Nathan's Maths Fluency Series — Multiplication &amp; Division Tables Mastery<br>
+      Covering the 6×, 7×, 8× and 9× tables.<br><br>
+      Features: Spaced repetition review, error-weighted practice,
+      intermediate step (no timer, no table), teacher settings (clean/corrected cycles),
+      progress tracker with dates, division connection flash animations.
+    </p>
+  </div>`;
+}
+
+function setSetting(key, val){
+  settings[key] = val;
+  saveSettings();
+}
+
+function confirmReset(){
+  if(confirm('Are you sure you want to reset ALL progress? This cannot be undone.')){
+    tablesPassed = {6:{mult:false,div:false},7:{mult:false,div:false},8:{mult:false,div:false},9:{mult:false,div:false}};
+    errorCounts = {6:{},7:{},8:{},9:{}};
+    reviewDates = {6:[],7:[],8:[],9:[]};
+    saveProgress();
+    alert('Progress reset.');
+    updateHomeBadges();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CHIME
+// ═══════════════════════════════════════════════════════════════
+function playChime(){
+  try{
+    const ctx = new(window.AudioContext||window.webkitAudioContext)();
+    [523,659,784].forEach((freq,i)=>{
+      const osc=ctx.createOscillator(), gain=ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type='sine'; osc.frequency.value=freq;
+      const t=ctx.currentTime+i*0.12;
+      gain.gain.setValueAtTime(0.18,t);
+      gain.gain.exponentialRampToValueAtTime(0.001,t+0.22);
+      osc.start(t); osc.stop(t+0.22);
+    });
+  }catch(e){}
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PRINT
+// ═══════════════════════════════════════════════════════════════
+function doPrint(type){
+  const tables=[6,7,8,9]; const mults=NEW_FACTS; let qs=[];
+  for(let i=0;i<20;i++){
+    const t=tables[Math.floor(Math.random()*tables.length)];
+    const m=mults[Math.floor(Math.random()*mults.length)];
+    const v=TABLES[t][m-1];
+    if(type==='mult') qs.push({q:`${t} × ${m} =`,a:''+v});
+    else if(type==='div') qs.push({q:`${v} ÷ ${t} =`,a:''+m});
+    else qs.push(Math.random()<0.5?{q:`${t} × ${m} =`,a:''+v}:{q:`${v} ÷ ${t} =`,a:''+m});
+  }
+  const titles={mult:'Test 1 — Multiplication Only',div:'Test 2 — Division Only',mix:'Test 3 — Mixed'};
+  let rows='', ans='';
+  qs.forEach((q,i)=>{rows+=`<tr><td>${i+1}.</td><td>${q.q}</td><td class="ans-box">&nbsp;</td></tr>`;});
+  qs.forEach((q,i)=>{ans+=`<span><b>${i+1}.</b> ${q.a}</span>`;});
+  const w = window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><title>${titles[type]}</title>
+  <style>
+    body{font-family:'Segoe UI',Arial,sans-serif;padding:30px;color:#222;max-width:700px;margin:0 auto}
+    h1{color:#1a4b8c;font-size:22px;margin-bottom:6px}
+    h2{color:#1a4b8c;font-size:16px;margin-top:28px;margin-bottom:8px}
+    table{border-collapse:collapse;width:100%}
+    td{padding:5px 8px}tr{height:50px}
+    .brand{font-size:11px;color:#aaa;margin-bottom:4px}
+    .meta{font-size:13px;color:#888;margin-bottom:18px}
+    .ans-box{width:100px;border-bottom:1.5px solid #bbb}
+    .ans{font-size:14px;line-height:2.4;display:flex;flex-wrap:wrap;gap:8px}
+    .ans span{min-width:60px}
+    @media print{button{display:none}}
+  </style></head><body>
+  <div class="brand">Mr Nathan's Maths Tuition — Maths Fluency Series — Isle of Man</div>
+  <h1>${titles[type]}</h1>
+  <div class="meta">Name: _________________________________ &nbsp;&nbsp; Date: _____________ &nbsp;&nbsp; Score: _____ / 20</div>
+  <table>${rows}</table>
+  <h2>Answers</h2><div class="ans">${ans}</div>
+  <button onclick="window.print()" style="margin-top:24px;padding:10px 24px;background:#1a4b8c;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer">🖨️ Print</button>
+  </body></html>`);
+  w.document.close();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// KEY HANDLER
+// ═══════════════════════════════════════════════════════════════
+document.getElementById('flash-input').addEventListener('keydown', e=>{if(e.key==='Enter') flashSubmit();});
+
+// ═══════════════════════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════════════════════
+loadSettings();
+loadProgress();
+setLogos();
+updateHomeBadges();
+
+</script>
+</body>
+</html>

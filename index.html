@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mr Nathan's Maths Fluency — Resource Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#fdf8e1;--cream-dark:#f5efcc;
+  --blue:#1a4b8c;--blue-mid:#2a6dd9;--blue-light:#d6e8ff;
+  --white:#ffffff;--text:#1a1a2e;
+  --green:#1e8a4a;--green-light:#d4f5e2;
+  --gold:#c8960c;--gold-light:#fff3cc;
+  --purple:#6b21a8;
+  --shadow-sm:0 2px 8px rgba(26,75,140,0.12);
+  --shadow-md:0 4px 20px rgba(26,75,140,0.18);
+  --shadow-lg:0 8px 40px rgba(26,75,140,0.22);
+  --radius-sm:10px;--radius-md:16px;--radius-lg:22px;
+}
+html{height:100%}
+body{
+  font-family:'Nunito',sans-serif;
+  background:linear-gradient(135deg,#1a4b8c 0%,#2a6dd9 40%,#3b82f6 100%);
+  min-height:100vh;
+  display:flex;align-items:flex-start;justify-content:center;
+}
+#app{
+  background:var(--cream);
+  min-height:100vh;
+  width:100%;max-width:960px;
+  padding:clamp(10px,2vw,24px);
+}
+
+/* HEADER */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:clamp(8px,1.5vw,14px) clamp(10px,2vw,20px);
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);
+  border-radius:var(--radius-lg);
+  margin-bottom:clamp(16px,3vw,28px);
+  box-shadow:var(--shadow-md);
+  position:relative;overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;
+  background:rgba(255,255,255,0.06);border-radius:50%;
+}
+.logo-wrap{display:flex;align-items:center;gap:clamp(10px,2vw,16px);position:relative;z-index:1}
+.logo-circle{
+  width:clamp(60px,9vw,90px);height:clamp(60px,9vw,90px);
+  border-radius:50%;border:3px solid rgba(255,255,255,0.4);
+  overflow:hidden;flex-shrink:0;background:var(--white);
+  box-shadow:0 3px 16px rgba(0,0,0,0.25);
+}
+.logo-circle img{width:100%;height:100%;object-fit:contain;}
+.brand-block{display:flex;flex-direction:column}
+.brand-name{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(16px,2.8vw,26px);
+  color:#ffffff;line-height:1.1;
+}
+.brand-sub{
+  font-size:clamp(10px,1.6vw,14px);
+  color:rgba(255,255,255,0.75);
+  font-weight:700;letter-spacing:0.5px;margin-top:2px;
+}
+.header-badge{
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:var(--radius-md);
+  padding:6px 14px;
+  font-size:clamp(9px,1.4vw,13px);
+  color:rgba(255,255,255,0.9);
+  font-weight:700;
+  position:relative;z-index:1;
+}
+
+/* WELCOME */
+.welcome{
+  background:linear-gradient(135deg,var(--gold-light),#fff8e1);
+  border:2px solid var(--gold);
+  border-radius:var(--radius-lg);
+  padding:clamp(14px,2.5vw,22px) clamp(16px,3vw,28px);
+  margin-bottom:clamp(16px,3vw,28px);
+  text-align:center;box-shadow:var(--shadow-sm);
+}
+.welcome h1{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(20px,4vw,34px);
+  color:var(--blue);margin-bottom:6px;
+}
+.welcome p{font-size:clamp(12px,1.8vw,16px);color:#555;font-weight:600;}
+
+/* SECTION LABEL */
+.section-label{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(14px,2.2vw,20px);
+  color:var(--blue);
+  margin-bottom:clamp(10px,2vw,16px);
+  display:flex;align-items:center;gap:8px;
+}
+.section-label span{
+  background:var(--blue);color:white;
+  border-radius:var(--radius-sm);
+  padding:2px 12px;font-size:0.8em;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:clamp(12px,2vw,20px);
+  margin-bottom:clamp(16px,3vw,28px);
+}
+
+/* CARDS */
+.card{
+  background:var(--white);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform 0.18s,box-shadow 0.18s;
+  text-decoration:none;border:2px solid transparent;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.card-top{
+  padding:clamp(18px,3vw,28px) clamp(14px,2vw,20px) clamp(12px,2vw,20px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;
+}
+.card-icon{
+  width:clamp(60px,10vw,80px);height:clamp(60px,10vw,80px);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(28px,5vw,38px);margin-bottom:12px;box-shadow:var(--shadow-sm);
+}
+.card-title{font-family:'Fredoka One',cursive;font-size:clamp(16px,2.5vw,22px);margin-bottom:6px;}
+.card-desc{font-size:clamp(11px,1.5vw,13px);color:#666;font-weight:600;line-height:1.4;}
+.card-btn{
+  display:block;text-align:center;
+  padding:clamp(10px,1.5vw,14px);
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(13px,1.8vw,16px);
+  border-top:2px solid rgba(0,0,0,0.06);
+  transition:background 0.15s;
+}
+.badge-soon{
+  display:inline-block;background:var(--cream-dark);color:#999;
+  border-radius:20px;padding:2px 10px;
+  font-size:11px;font-weight:800;margin-top:6px;
+}
+
+/* Card colour themes */
+.card.tables{border-color:#2a6dd9;}
+.card.tables .card-icon{background:var(--blue-light);color:var(--blue);}
+.card.tables .card-title{color:var(--blue);}
+.card.tables .card-btn{background:var(--blue);color:white;}
+.card.tables:hover .card-btn{background:var(--blue-mid);}
+
+.card.coming{border-color:#ddd;opacity:0.72;pointer-events:none;}
+.card.coming .card-icon{background:#f0f0f0;color:#aaa;}
+.card.coming .card-title{color:#aaa;}
+.card.coming .card-btn{background:#eee;color:#aaa;}
+
+.card.addition .card-icon{background:var(--green-light);color:var(--green);}
+.card.addition .card-title{color:var(--green);}
+.card.subtraction .card-icon{background:#fde8e6;color:#c0392b;}
+.card.subtraction .card-title{color:#c0392b;}
+.card.division .card-icon{background:#f3e8ff;color:var(--purple);}
+.card.division .card-title{color:var(--purple);}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:clamp(12px,2vw,18px);
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  border-radius:var(--radius-lg);
+  color:rgba(255,255,255,0.75);
+  font-size:clamp(10px,1.4vw,13px);
+  font-weight:700;
+}
+.footer strong{color:white;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-circle">
+        <img src="mr_nathan_logo.png" alt="Mr Nathan's Maths Tuition Logo"/>
+      </div>
+      <div class="brand-block">
+        <div class="brand-name">Mr Nathan's</div>
+        <div class="brand-sub">MATHS FLUENCY SERIES</div>
+      </div>
+    </div>
+    <div class="header-badge">Resource Hub</div>
+  </div>
+
+  <!-- WELCOME -->
+  <div class="welcome">
+    <h1>⭐ Welcome to the Fluency Hub!</h1>
+    <p>Choose a product below to start practising. More products coming soon!</p>
+  </div>
+
+  <!-- LIVE -->
+  <div class="section-label">Available Now <span>LIVE</span></div>
+  <div class="grid">
+    <a class="card tables" href="tables.html">
+      <div class="card-top">
+        <div class="card-icon">✖️</div>
+        <div class="card-title">Tables Mastery</div>
+        <div class="card-desc">Times tables practice from 1× to 12×. Timed challenges, streaks & stars!</div>
+      </div>
+      <div class="card-btn">▶ Start Now</div>
+    </a>
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="section-label">Coming Soon <span style="background:var(--gold);color:#333;">SOON</span></div>
+  <div class="grid">
+    <div class="card addition coming">
+      <div class="card-top">
+        <div class="card-icon">➕</div>
+        <div class="card-title">Addition Fluency</div>
+        <div class="card-desc">Fast addition practice across all year levels.</div>
+        <div class="badge-soon">COMING SOON</div>
+      </div>
+      <div class="card-btn">Coming Soon</div>
+    </div>
+    <div class="card subtraction coming">
+      <div class="card-top">
+        <div class="card-icon">➖</div>
+        <div class="card-title">Subtraction Fluency</div>
+        <div class="card-desc">Build confidence and speed with subtraction.</div>
+        <div class="badge-soon">COMING SOON</div>
+      </div>
+      <div class="card-btn">Coming Soon</div>
+    </div>
+    <div class="card division coming">
+      <div class="card-top">
+        <div class="card-icon">➗</div>
+        <div class="card-title">Division Fluency</div>
+        <div class="card-desc">Division facts and strategies made fun.</div>
+        <div class="badge-soon">COMING SOON</div>
+      </div>
+      <div class="card-btn">Coming Soon</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Mr Nathan's Maths Fluency Series</strong> · Built with ❤️ for curious learners · Isle of Man
+  </div>
+
+</div>
+</body>
+</html>
